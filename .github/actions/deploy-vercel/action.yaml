@@ -1,5 +1,5 @@
 name: Deploy Vercel
-description: Deploy to Vercel in two modes: production and preview
+description: Deploy to Vercel in two modes
 
 inputs:
   vercel-token:
