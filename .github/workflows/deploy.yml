@@ -2,7 +2,11 @@ name: Deloy to Netlify
 
 on:
   workflow_dispatch:
-
+    inputs:
+      deploy-netlify:
+        type: boolean
+        description: Enable Netlify deployment
+        default: true
 jobs:
   deploy:
     runs-on: ubuntu-latest 
