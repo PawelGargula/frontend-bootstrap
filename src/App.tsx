@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Footer from './components/footer';
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
         <h1 className="text-xl font-bold text-center">🚀 Rick and Morty - Fan Service</h1>
       </div>
       <Outlet />
+      <Footer />
     </div>
   );
 };
