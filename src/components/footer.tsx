@@ -5,9 +5,11 @@ import logoSrc from '../../_resources/img/logo-dark-vertical-1.png';
 export default function Footer() {
     const { appVersion } = useConfig();
 
-    if (!import.meta.env.VITE_ENVIRONMENT) {
-        return <Logo />;
-    }
+    // if (!import.meta.env.VITE_ENVIRONMENT) {
+    //     return <Logo />;
+    // }
+
+    console.log(import.meta.env);
 
     return (
         <div className="flex justify-between items-center mt-4">
