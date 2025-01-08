@@ -20,11 +20,8 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Lint code
-        run: npm run lint
-
-      - name: Run unit tests
-        run: npm run test
+      - name: Lint and Unit Test
+        uses: ./.github/actions/lint-and-unit-test
 
       - name: Build project
         run: npm run build
