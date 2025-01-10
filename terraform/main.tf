@@ -7,9 +7,12 @@ terraform {
   }
 
   required_version = ">= 1.5.0"
-}
 
-provider "aws" {
-  region = "eu-central-1"
+  backend "s3" {
+    bucket         = "frontend-bootstrap-10-terraform-state-bucket"
+    key            = "state/terraform.tfstate"
+    region         = "eu-central-1"
+    encrypt        = true
+    dynamodb_table = "terraform-state-lock"
+  }
 }
-
