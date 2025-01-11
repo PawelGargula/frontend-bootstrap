@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_ENVIRONMENT: string;
+  readonly VITE_IMG_HOST: string;
 }
 
 interface ImportMeta {

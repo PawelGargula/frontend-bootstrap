@@ -1,6 +1,5 @@
 import React from 'react';
 import { useConfig } from '../context/ConfigContext';
-import logoSrc from '../../_resources/img/logo-dark-vertical-1.png';
 
 export default function Footer() {
     const { appVersion } = useConfig();
@@ -23,5 +22,5 @@ export default function Footer() {
 }
 
 function Logo() {
-    return <img src={logoSrc} alt="Logo projektu Opanuj Frontend" className="w-32 mx-auto" />;
+    return <img src={`${import.meta.env.VITE_IMG_HOST}logo-dark-vertical-1.png`} alt="Logo projektu Opanuj Frontend" className="w-32 mx-auto" />;
 }
