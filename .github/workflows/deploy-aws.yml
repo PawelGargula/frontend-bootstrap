@@ -35,14 +35,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Deploy WebApp to AWS
-        run: aws s3 sync dist s3://frontend-bootstrap-10
-
       - name: Deploy images to AWS
         run: aws s3 sync public s3://web-apps-images-cdn
 
-      - name: Invalidate WebApp CloudFront cache
-        run: aws cloudfront create-invalidation --distribution-id E1CKAPFXNJI750 --paths "/*"
-
       - name: Invalidate images CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id E10X6DW9A9FH4P --paths "/*"
+
+      - name: Deploy WebApp to AWS
+        run: aws s3 sync dist s3://frontend-bootstrap-10
+
+      - name: Invalidate WebApp CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id E1CKAPFXNJI750 --paths "/*"
