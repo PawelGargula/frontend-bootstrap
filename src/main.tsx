@@ -5,7 +5,9 @@ import App from './App';
 import { fetchCharacter, fetchCharacters } from './loaders/CharacterLoader';
 import { CharacterRouteParams } from './types/types';
 import { ConfigProvider } from './context/ConfigContext';
-import customErrorProcessor from './custom-error/custom-error';
+import { createInstance } from '@featurevisor/sdk';
+import { FeaturevisorProvider } from '@featurevisor/react';
+// import customErrorProcessor from './custom-error/custom-error';
 
 const Characters = lazy(() => import('./pages/Characters'));
 const CharacterDetails = lazy(() => import('./pages/CharacterDetails'));
@@ -31,12 +33,19 @@ const router = createHashRouter([
   },
 ]);
 
+const envName = import.meta.env.VITE_ENV_NAME || 'preview';
+const featurevisor = createInstance({
+  datafileUrl: `https://d1n1aemam18mpx.cloudfront.net/datafiles/${envName}/datafile-tag-all.json`,
+});
+
 ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>
     <ConfigProvider>
-      <RouterProvider router={router} />
+      <FeaturevisorProvider instance={featurevisor}>
+        <RouterProvider router={router} />
+      </FeaturevisorProvider>
     </ConfigProvider>
   </React.StrictMode>,
 );
 
-customErrorProcessor();
+// customErrorProcessor();

@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Character } from '../../lib/rick-and-morty-api-client';
+import CharactersPagination from './CharactersPagination';
+import { useFlag } from '@featurevisor/react';
 
 const Characters = () => {
   const { characters } = useLoaderData() as { characters: Character[] };
+
+  const isPaginationEnabled = useFlag('pagination', {
+    country: new URLSearchParams(window.location.search).get('country'),
+  });
 
   useEffect(() => {
     if (!import.meta.env.VITE_AWS_MONITORING_API)
@@ -40,6 +46,7 @@ const Characters = () => {
           </li>
         ))}
       </ul>
+      {isPaginationEnabled && <CharactersPagination />}
     </div>
   );
 };
