@@ -33,7 +33,7 @@ const router = createHashRouter([
   },
 ]);
 
-const envName = import.meta.env.VITE_ENVIRONMENT  || 'preview';
+const envName = import.meta.env.VITE_ENV_NAME || 'preview';
 const featurevisor = createInstance({
   datafileUrl: `https://d1n1aemam18mpx.cloudfront.net/datafiles/${envName}/datafile-tag-all.json`,
 });
