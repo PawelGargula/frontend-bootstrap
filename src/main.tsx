@@ -5,6 +5,7 @@ import App from './App';
 import { fetchCharacter, fetchCharacters } from './loaders/CharacterLoader';
 import { CharacterRouteParams } from './types/types';
 import { ConfigProvider } from './context/ConfigContext';
+import customErrorProcessor from './custom-error/custom-error';
 
 const Characters = lazy(() => import('./pages/Characters'));
 const CharacterDetails = lazy(() => import('./pages/CharacterDetails'));
@@ -37,3 +38,5 @@ ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
     </ConfigProvider>
   </React.StrictMode>,
 );
+
+customErrorProcessor();
